@@ -14,12 +14,16 @@ int main(){
   //modify size display
   char sDisplay[50] = {0};
   while( fSize ){
+    if( fSize >= 1000000000){
+      sprintf(sDisplay,"%ld GB ",fSize/1000000000);
+      fSize %= 1000000000;
+    }
     if( fSize >= 1000000){
-      sprintf(sDisplay,"%ld GB ",fSize/1000000);
+      sprintf(sDisplay,"%ld MB ",fSize/1000000);
       fSize %= 1000000;
     }
     else if( fSize >= 1000){
-      sprintf(sDisplay,"%s%ld MB ", sDisplay, fSize/1000);
+      sprintf(sDisplay,"%s%ld KB ", sDisplay, fSize/1000);
       fSize %= 1000;
     }
     else{
